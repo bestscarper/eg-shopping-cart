@@ -1,8 +1,8 @@
 package shopping;
 
-/**
- * Created by ashley on 30/09/2015.
- */
+import java.util.List;
+import java.util.Map;
+
 public class MelonsBogoffOffer implements Offer {
 
     private static final MelonsBogoffOffer INSTANCE = new MelonsBogoffOffer();
@@ -13,4 +13,9 @@ public class MelonsBogoffOffer implements Offer {
         return INSTANCE;
     }
 
+    @Override
+    public long appliedTo(List<String> belt, Map<String, Long> costing) {
+        long count = belt.stream().filter( item -> "Melon".equals(item) ).count();
+        return count/2 * costing.get("Melon");
+    }
 }

@@ -1,22 +1,21 @@
 package shopping;
 
-/**
- * Created by ashley on 30/09/2015.
- */
 public class Receipt {
     private long total;
+    private long discount;
 
-    public Receipt(long total) {
+    public Receipt(long total, long discount) {
         this.total = total;
+        this.discount = discount;
     }
 
-    public static Receipt create(long total) {
+    public static Receipt create(long total, long discount) {
 
-        return new Receipt(total);
+        return new Receipt(total,discount);
     }
 
     public long totalCost() {
 
-        return this.total;
+        return this.total - this.discount;
     }
 }

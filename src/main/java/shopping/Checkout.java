@@ -4,12 +4,8 @@ import com.google.common.collect.Lists;
 
 import java.util.List;
 import java.util.Map;
-import java.util.WeakHashMap;
 import java.util.stream.Stream;
 
-/**
- * Created by ashley on 30/09/2015.
- */
 public class Checkout {
 
     private List<Offer> offers;
@@ -25,10 +21,15 @@ public class Checkout {
     }
 
     public Receipt shop(Basket basket) {
-        String[] items = basket.getItems();
-        Stream<String> belt = Lists.newArrayList(items).stream();
+        List<String> items = basket.getItems();
 
-        long total = belt.map(item -> costing.get(item)).reduce(0L,(a,b) -> a+b);
-        return Receipt.create(total);
+        long total = items
+                .stream()
+                .map(item -> costing.get(item))
+                .reduce(0L, (a, b) -> a + b);
+
+        long discount = offers.stream().map(offer -> offer.appliedTo(items,costing)).reduce(0L, (a, b) -> a + b);
+
+        return Receipt.create(total,discount);
     }
 }
