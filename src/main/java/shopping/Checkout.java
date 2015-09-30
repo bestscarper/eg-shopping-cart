@@ -28,7 +28,10 @@ public class Checkout {
                 .map(item -> costing.get(item))
                 .reduce(0L, (a, b) -> a + b);
 
-        long discount = offers.stream().map(offer -> offer.appliedTo(items,costing)).reduce(0L, (a, b) -> a + b);
+        long discount = offers
+                .stream()
+                .map(offer -> offer.appliedTo(items,costing))
+                .reduce(0L, (a, b) -> a + b);
 
         return Receipt.create(total,discount);
     }

@@ -33,8 +33,8 @@ public class Limes3for2OfferTest {
     }
 
     @Test
-    public void shouldDiscountTwoIfGivenSix() throws Exception {
-        List<String> items = ImmutableList.of(LIME, LIME, LIME, LIME);
+    public void shouldDiscountOnTwoIfGivenSix() throws Exception {
+        List<String> items = ImmutableList.of(LIME, LIME, LIME, LIME, LIME, LIME);
 
         assertEquals(30L, offer.appliedTo(items, costing));
     }

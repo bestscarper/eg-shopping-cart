@@ -16,7 +16,7 @@ public class MelonsBogoffOffer implements Offer {
 
     @Override
     public long appliedTo(List<String> belt, Map<String, Long> costing) {
-        long count = belt.stream().filter( item -> MELON.equals(item) ).count();
+        long count = belt.stream().filter(MELON::equals).count();
         return count/2 * costing.get(MELON);
     }
 }
