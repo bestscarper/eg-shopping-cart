@@ -23,7 +23,7 @@ public class IntegrationTest {
         Checkout checkout = Checkout.init(offers, costing);
 
         Basket basket = Basket.fromList(emptyList);
-        Receipt receipt = Checkout.shop(basket);
+        Receipt receipt = checkout.shop(basket);
 
         assertEquals(receipt.totalCost(), 0);
     }
@@ -35,8 +35,10 @@ public class IntegrationTest {
         List<Offer> offers = Lists.emptyList();
         Map<String,Long> costing = ImmutableMap.of("Apple", 35L, "Banana", 20L);
 
-        Basket basket = Basket.fromList(emptyList);
-        Receipt receipt = Checkout.shop(basket);
+        Checkout checkout = Checkout.init(offers, costing);
+
+        Basket basket = Basket.fromList(simpleList);
+        Receipt receipt = checkout.shop(basket);
         assertEquals(receipt.totalCost(), 90);
 
     }

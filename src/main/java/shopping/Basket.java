@@ -5,8 +5,17 @@ package shopping;
  */
 public class Basket {
 
-    public static Basket fromList(String[] emptyList) {
+    private final String[] items;
 
-        return new Basket();
+    public Basket(String[] items) {
+        this.items = items;
+    }
+
+    public static Basket fromList(String[] items) {
+        return new Basket(items);
+    }
+
+    public String[] getItems() {
+        return items;
     }
 }

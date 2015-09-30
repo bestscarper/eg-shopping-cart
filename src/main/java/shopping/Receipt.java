@@ -4,13 +4,19 @@ package shopping;
  * Created by ashley on 30/09/2015.
  */
 public class Receipt {
-    public static Receipt create() {
+    private long total;
 
-        return new Receipt();
+    public Receipt(long total) {
+        this.total = total;
     }
 
-    public int totalCost() {
+    public static Receipt create(long total) {
 
-        return 0;
+        return new Receipt(total);
+    }
+
+    public long totalCost() {
+
+        return this.total;
     }
 }

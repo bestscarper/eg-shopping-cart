@@ -1,3 +1,5 @@
+(solution by Ashley Hindmarsh)
+
 Using any language you like, write a simple program that calculates the price of a basket of shopping.
 Items are presented one at a time, in a list, identified by name - for example "Apple" or "Banana".
 Multiple items are present multiple times in the list, so for example ["Apple", "Apple", "Banana"]
