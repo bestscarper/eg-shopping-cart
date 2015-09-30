@@ -44,6 +44,7 @@ public class IntegrationTest {
         assertEquals(receipt.totalCost(), 90);
     }
 
+    // Melons are 50p each, but are available as "buy one get one free"
     @Test
     public void melonsBogoff() throws Exception {
         String[] melons = {"Apple", "Apple", "Melon", "Melon", "Melon"};
@@ -57,4 +58,17 @@ public class IntegrationTest {
         assertEquals(receipt.totalCost(), 170);
     }
 
+    //  - Limes are 15p each, but are available in a "three for the price [of] two" offer
+    @Test
+    public void multipleDiscounts() throws Exception {
+        String[] melons = {"Lime", "Melon", "Lime", "Melon", "Lime"};
+
+        List<Offer> offers = ImmutableList.of(MelonsBogoffOffer.getInstance(), Limes3for2Offer.getInstance());
+
+        Checkout checkout = Checkout.init(offers, costing);
+
+        Basket basket = Basket.fromList(melons);
+        Receipt receipt = checkout.shop(basket);
+        assertEquals(receipt.totalCost(), 50L + 30L); // 2 melons + 3 limes
+    }
 }
