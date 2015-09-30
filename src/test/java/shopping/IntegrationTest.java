@@ -46,7 +46,7 @@ public class IntegrationTest {
 
     @Test
     public void melonsBogoff() throws Exception {
-        String[] melons = {"Melon", "Melon", "Melon"};
+        String[] melons = {"Apple", "Apple", "Melon", "Melon", "Melon"};
 
         List<Offer> offers = ImmutableList.of(MelonsBogoffOffer.getInstance());
 
@@ -54,7 +54,7 @@ public class IntegrationTest {
 
         Basket basket = Basket.fromList(melons);
         Receipt receipt = checkout.shop(basket);
-        assertEquals(receipt.totalCost(), 100);
+        assertEquals(receipt.totalCost(), 170);
     }
 
 }
