@@ -12,9 +12,10 @@ import static org.junit.Assert.*;
 
 public class IntegrationTest {
 
+    private final String[] emptyList = new String[]{};
+
     @Test
     public void emptyBasketNoOffers() throws Exception {
-        String[] emptyList = {};
 
         List<Offer> offers = Lists.emptyList();
         Map<String,Long> costing = ImmutableMap.of();
@@ -27,5 +28,17 @@ public class IntegrationTest {
         assertEquals(receipt.totalCost(), 0);
     }
 
+    @Test
+    public void simpleBasketNoOffers() throws Exception {
+        String[] simpleList = {"Apple", "Apple", "Banana"};
+
+        List<Offer> offers = Lists.emptyList();
+        Map<String,Long> costing = ImmutableMap.of("Apple", 35L, "Banana", 20L);
+
+        Basket basket = Basket.fromList(emptyList);
+        Receipt receipt = Checkout.shop(basket);
+        assertEquals(receipt.totalCost(), 90);
+
+    }
 
 }
