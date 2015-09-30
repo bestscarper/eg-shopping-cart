@@ -1,14 +1,16 @@
-(solution by Ashley Hindmarsh)
+I was asked to do this as a coding task for a contract position. It actually presents itself as a nice TDD/OO *kata* (exercise).
+I've rewritten these instructions so it won't be so easy to google.
 
-Using any language you like, write a simple program that calculates the price of a basket of shopping.
-Items are presented one at a time, in a list, identified by name - for example "Apple" or "Banana".
-Multiple items are present multiple times in the list, so for example ["Apple", "Apple", "Banana"]
-is a basket with two apples and one banana.
+(Personally, I don't have a problem publishing this solution - I think it's a pretty lazy way to do recruitment)
 
-Items are priced as follows:
- - Apples are 35p each
- - Bananas are 20p each
- - Melons are 50p each, but are available as ëbuy one get one freeí
- - Limes are 15p each, but are available in a ëthree for the price twoí offer
+ * The basket is presented as a list of named items. Items can appear multiple times in the list.
+ * Each item has a basic cost price.
+ * The shop offers discounts - "buy-one-get-one-free" and "three-for-two", on some items.
+ * The program should calculate the total cost of the items presented.
 
-Given a list of shopping, calculate the total cost of those items.
+e.g.
+Apples are 15pm, Bananas are 12p...etc
+Apple, Banana, Apple, Melon, Grapefruit
+Apples are BOGOFF
+...etc
+
