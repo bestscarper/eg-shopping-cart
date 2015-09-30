@@ -1,6 +1,5 @@
 package shopping;
 
-import java.util.List;
 import java.util.Map;
 
 public class MelonsBogoffOffer implements Offer {
@@ -15,8 +14,8 @@ public class MelonsBogoffOffer implements Offer {
     }
 
     @Override
-    public long appliedTo(List<String> belt, Map<String, Long> costing) {
-        long count = belt.stream().filter(MELON::equals).count();
+    public long appliedTo(Basket basket, Map<String, Long> costing) {
+        long count = basket.getItems().stream().filter(MELON::equals).count();
         return count/2 * costing.get(MELON);
     }
 }

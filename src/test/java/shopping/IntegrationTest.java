@@ -2,7 +2,7 @@ package shopping;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.assertj.core.util.Lists;
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class IntegrationTest {
     @Test
     public void emptyBasketNoOffers() throws Exception {
 
-        List<Offer> offers = Lists.emptyList();
+        List<Offer> offers = ImmutableList.of();
         Map<String,Long> costing = ImmutableMap.of();
 
         Checkout checkout = Checkout.init(offers, costing);
@@ -34,7 +34,7 @@ public class IntegrationTest {
     public void simpleBasketNoOffers() throws Exception {
         String[] simpleList = {"Apple", "Apple", "Banana"};
 
-        List<Offer> offers = Lists.emptyList();
+        List<Offer> offers = ImmutableList.of();
         Map<String,Long> costing = ImmutableMap.of("Apple", 35L, "Banana", 20L);
 
         Checkout checkout = Checkout.init(offers, costing);

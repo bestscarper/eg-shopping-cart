@@ -1,9 +1,6 @@
 package shopping;
 
-import java.util.List;
 import java.util.Map;
-
-import static java.lang.Math.floor;
 
 public class Limes3for2Offer implements Offer {
 
@@ -17,8 +14,8 @@ public class Limes3for2Offer implements Offer {
     }
 
     @Override
-    public long appliedTo(List<String> belt, Map<String, Long> costing) {
-        long count = belt.stream().filter(LIME::equals).count();
+    public long appliedTo(Basket basket, Map<String, Long> costing) {
+        long count = basket.getItems().stream().filter(LIME::equals).count();
         return count / 3 * costing.get(LIME);
     }
 }

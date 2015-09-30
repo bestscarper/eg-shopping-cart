@@ -23,14 +23,14 @@ public class Checkout {
     public Receipt shop(Basket basket) {
         List<String> items = basket.getItems();
 
-        long total = items
-                .stream()
-                .map(item -> costing.get(item))
-                .reduce(0L, (a, b) -> a + b);
+        long total = basket.getItemTotal(costing);
 
+        // this could do with more SRP
         long discount = offers
                 .stream()
-                .map(offer -> offer.appliedTo(items,costing))
+                .map(offer -> {
+                    return offer.appliedTo(basket, costing);
+                })
                 .reduce(0L, (a, b) -> a + b);
 
         return Receipt.create(total,discount);

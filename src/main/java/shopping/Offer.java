@@ -8,5 +8,5 @@ import java.util.stream.Stream;
  * Created by ashley on 30/09/2015.
  */
 public interface Offer {
-    long appliedTo(List<String> belt, Map<String, Long> costing);
+    long appliedTo(Basket basket, Map<String, Long> costing);
 }

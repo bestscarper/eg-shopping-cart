@@ -2,7 +2,6 @@ package shopping;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import java.util.List;
@@ -22,29 +21,29 @@ public class MelonsBogoffOfferTest {
 
     @Test
     public void testEmpty() throws Exception {
-        List<String> items = Lists.emptyList();
+        Basket basket = Basket.fromList(ImmutableList.of());
 
-        assertEquals(0L, offer.appliedTo(items, costing));
+        assertEquals(0L, offer.appliedTo(basket, costing));
     }
 
     @Test
     public void shouldDiscountOneIfGivenThree() throws Exception {
-        List<String> items = ImmutableList.of("Melon", "Melon", "Melon");
+        Basket basket = Basket.fromList(ImmutableList.of("Melon", "Melon", "Melon"));
 
-        assertEquals(50L, offer.appliedTo(items, costing));
+        assertEquals(50L, offer.appliedTo(basket, costing));
     }
 
     @Test
     public void shouldDiscountTwoIfGivenFour() throws Exception {
-        List<String> items = ImmutableList.of("Melon","Melon","Melon","Melon");
+        Basket basket = Basket.fromList(ImmutableList.of("Melon", "Melon", "Melon", "Melon"));
 
-        assertEquals(100L, offer.appliedTo(items, costing));
+        assertEquals(100L, offer.appliedTo(basket, costing));
     }
 
     @Test
     public void shouldNotDiscountOtherItems() throws Exception {
-        List<String> items = ImmutableList.of("Apple","Apple");
+        Basket basket = Basket.fromList(ImmutableList.of("Apple", "Apple"));
 
-        assertEquals(0L, offer.appliedTo(items, costing));
+        assertEquals(0L, offer.appliedTo(basket, costing));
     }
 }
